@@ -1,0 +1,19 @@
+# $v03
+ $dec $zero   $id  $idq 
+$bool     (     )     < 
+   or 
+#
+    S -> OR #1
+   OR -> HOR BOOL ) #2
+  HOR -> ( or #3 |
+         HOR BOOL #4
+ BOOL -> $bool #5 |
+         $idq #6 |
+         REL #7 |
+         OR #8
+  REL -> ( < E E ) #9
+CONST -> $dec #10 |
+         $zero #11
+    E -> CONST #12 |
+         $id #13
+

@@ -1,0 +1,56 @@
+/*solve:-
+    List = ['Andrey', 'Vitya', 'Dima', 'Yura'], member(X, List), delete(List, X, L), L = [A,B,C|[]].
+    */
+
+boys(L):-
+    L = [andrey, yura, vitya, dima, tolya].
+
+boy(andrey).
+boy(yura).
+boy(vitya).
+boy(dima).
+boy(tolya).
+
+/* v_oboih(E, L1, L2):-
+    member(E, L1), member(E, L2).
+hotya_bi_v_odnom(E, L1, L2):-
+    member(E, L1); member(E, L2).
+
+peresechenie(L1, L2, R):-
+    setof(M, v_oboih(M, L1, L2), R).
+obedenenie(L1, L2, R):-
+    setof(M, hotya_bi_v_odnom(M, L1, L2), R).
+dopolnenie(L1, L2, R):-
+    obedenenie(L1, P,L2), peresechenie(L1, L2, P). */
+
+blame(andrey, vitya).
+blame(andrey, tolya).
+blame(vitya, andrey).
+blame(vitya, tolya).
+blame(vitya, dima).
+
+% Нужно найти такого мальчика, для которого выполнятся все условия. Он и будет виновником.
+
+% Работа с утверждениями. Утверждение может быть истинным или ложным. Поэтому нужно хранить истинность утверждения. Если утверждение истинно, то
+
+% Правду сказали не менее 3-х говорящих. Т.е. считаем что если говорили 3-е,
+% то одна из всех возможных троек сказала правду. Либо сказали правду все четверо.
+% Т.е. нужно перебрать правда-ложь для всех 3-х говорящих, и проверить на выполнимость.
+% Либо проверить выполнимость для всех 4.
+
+
+
+% Андрей 	: Витя или Толя
+% Витя 		: НЕ Витя и НЕ Юра = Андрей или Дима или Толя
+% Дима 		: Андрей правда, Витя ложь или Андрей ложь, Витя правда = ((В v Т) & ~(~B & ~Ю)) v (~(В v Т) & ~В & ~Ю)) =
+% = ((B v T) & (В v Ю)) v (~B & ~T & ~Ю) = B v (T & Ю) v (~B & ~T & ~Ю) = Витя или Толя с Юрой или Андрей или Дима =
+% = Витя или Андрей или Дима   
+% Юра 		: Дима ложь = Андрей правда, Витя правда или Андрей ложь, Витя ложь = ~(В v А v D) = ~B & ~A & ~D =
+% Ю v T = Юра или толя 
+
+statement(andrey, vitya, t).
+statement(andrey, tolya, t).
+statement(vitya, andrey, t).
+statement(vitya, dima, t).
+statement(vitya, tolya, t).
+statement(dima, ) 

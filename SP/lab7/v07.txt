@@ -1,0 +1,19 @@
+# $v07
+   $id   $dec  $zero  $bool 
+     (      )      + define 
+
+#
+     S -> PROC #1
+  PROC -> HPROC E ) #2
+ HPROC -> PCPAR ) #3
+ PCPAR -> ( define ( $id #4 |
+          PCPAR $id #5
+ CONST -> $dec #6 |
+          $zero #7
+     E -> CONST #8 |
+          $id #9 |
+          ADD #10
+   ADD -> HADD E ) #11
+  HADD -> ( + #12 |
+          HADD E #13
+

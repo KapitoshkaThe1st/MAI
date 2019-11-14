@@ -1,0 +1,1 @@
+(define (f f) (set! f 6) f)

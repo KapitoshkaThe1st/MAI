@@ -1,0 +1,20 @@
+# $gpred19
+      $id     $zero     $bool      $idq 
+        (         )         =    define 
+      not        or        if 
+#
+        S -> PRED #1
+     PRED -> HPRED BOOL ) #2
+    HPRED -> PDPAR ) #3
+    PDPAR -> ( define ( $idq #4 |
+             PDPAR $idq #5 |
+             PDPAR $id #6
+     BOOL -> $bool #7 |
+             $idq #8 |
+             ( = E E ) #9 |
+             ( not BOOL ) #10 |
+             ( or BOOL BOOL ) #11
+        E -> $id #12 |
+             $zero #13 |
+             ( if BOOL E E ) #14
+

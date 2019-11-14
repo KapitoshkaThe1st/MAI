@@ -1,0 +1,21 @@
+# $v12
+  $dec  $zero    $id   $idq 
+ $bool      +      (      ) 
+     <    not 
+#
+     S -> CPRED #1
+ CPRED -> HCPRED ) #2
+HCPRED -> ( $idq #3 |
+          HCPRED ARG #4
+   ARG -> E #5 |
+          BOOL #6
+ CONST -> $dec #7 |
+          $zero #8
+     E -> CONST #9 |
+          $id #10
+  BOOL -> $bool #11 |
+          $idq #12 |
+          REL #13 |
+          ( not BOOL ) #14
+   REL -> ( < E E ) #15
+

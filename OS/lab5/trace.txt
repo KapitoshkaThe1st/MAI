@@ -1,0 +1,74 @@
+execve("./fd_main", ["./fd_main"], 0x7ffca58c7fb0 /* 54 vars */) = 0
+brk(NULL)                               = 0x560e16b7e000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=144477, ...}) = 0
+mmap(NULL, 144477, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f89ad5ca000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\16\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=14560, ...}) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f89ad5f7000
+mmap(NULL, 2109712, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f89ad1c2000
+mprotect(0x7f89ad1c5000, 2093056, PROT_NONE) = 0
+mmap(0x7f89ad3c4000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f89ad3c4000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\260\34\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=2030544, ...}) = 0
+mmap(NULL, 4131552, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f89acdca000
+mprotect(0x7f89acfb1000, 2097152, PROT_NONE) = 0
+mmap(0x7f89ad1b1000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e7000) = 0x7f89ad1b1000
+mmap(0x7f89ad1b7000, 15072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f89ad1b7000
+close(3)                                = 0
+mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f89ad5f4000
+arch_prctl(ARCH_SET_FS, 0x7f89ad5f4740) = 0
+mprotect(0x7f89ad1b1000, 16384, PROT_READ) = 0
+mprotect(0x7f89ad3c4000, 4096, PROT_READ) = 0
+mprotect(0x560e15655000, 4096, PROT_READ) = 0
+mprotect(0x7f89ad5f1000, 4096, PROT_READ) = 0
+munmap(0x7f89ad5ca000, 144477)          = 0
+fstat(1, {st_mode=S_IFCHR|0600, st_rdev=makedev(136, 1), ...}) = 0
+brk(NULL)                               = 0x560e16b7e000
+brk(0x560e16b9f000)                     = 0x560e16b9f000
+write(1, "fully dynamic linked dynamic lib"..., 49) = 49
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=144477, ...}) = 0
+mmap(NULL, 144477, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f89ad5ca000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/libvector.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0000\10\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=12560, ...}) = 0
+mmap(NULL, 2105416, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f89acbc2000
+mprotect(0x7f89acbc4000, 2093056, PROT_NONE) = 0
+mmap(0x7f89acdc3000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1000) = 0x7f89acdc3000
+close(3)                                = 0
+mprotect(0x7f89acdc3000, 4096, PROT_READ) = 0
+munmap(0x7f89ad5ca000, 144477)          = 0
+write(1, "vector initialization\n", 22) = 22
+write(1, "vector cap: 4\n", 14)         = 14
+write(1, "vector size: 0\n", 15)        = 15
+write(1, "push 3 elements\n", 16)       = 16
+write(1, "vector cap: 4\n", 14)         = 14
+write(1, "vector size: 3\n", 15)        = 15
+write(1, "push extra 2 elements\n", 22) = 22
+write(1, "vector cap: 8\n", 14)         = 14
+write(1, "vector size: 5\n", 15)        = 15
+write(1, "pop 3 elements\n", 15)        = 15
+write(1, "vector cap: 4\n", 14)         = 14
+write(1, "vector size: 2\n", 15)        = 15
+write(1, "vector contains: 1 2 \n", 22) = 22
+write(1, "insert 100 on 1th position in ve"..., 37) = 37
+write(1, "vector contains: 1 100 2 \n", 26) = 26
+write(1, "erase 0th element in vector\n", 28) = 28
+write(1, "vector contains: 100 2 \n", 24) = 24
+write(1, "put 111 on 0th position in vecto"..., 34) = 34
+write(1, "vector contains: 111 2 \n", 24) = 24
+write(1, "vector destroying\n", 18)     = 18
+munmap(0x7f89acbc2000, 2105416)         = 0
+exit_group(0)                           = ?
++++ exited with 0 +++

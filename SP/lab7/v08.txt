@@ -1,0 +1,21 @@
+# $v08
+   $id   $dec  $zero  $bool 
+  $idq      (      )      < 
+define    not 
+#
+     S -> PRED #1
+  PRED -> HPRED BOOL ) #2
+ HPRED -> PDPAR ) #3
+ PDPAR -> ( define ( $idq #4 |
+          PDPAR $id #5 |
+          PDPAR $idq #6
+  BOOL -> $bool #7 |
+          $idq #8 |
+          REL #9 |
+          ( not BOOL ) #10
+   REL -> ( < E E ) #11
+ CONST -> $dec #12 |
+          $zero #13
+     E -> CONST #14 |
+          $id #15
+

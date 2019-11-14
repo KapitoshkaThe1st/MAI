@@ -1,0 +1,14 @@
+# $v02
+  $dec  $zero    $id  $bool 
+     +      (      ) 
+#
+     S -> CPROC #1
+ CPROC -> HCPROC ) #2
+HCPROC -> ( $id #3 |
+          HCPROC E #4
+ CONST -> $dec #5 |
+          $zero #6
+     E -> CONST #7 |
+          $id #8 |
+          CPROC #9
+

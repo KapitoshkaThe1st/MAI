@@ -1,0 +1,20 @@
+# $v06
+ $dec $zero   $id  $idq 
+$bool     (     )     < 
+ cond 
+#
+    S -> COND #1
+ COND -> HCOND CLAUS ) #2
+HCOND -> ( cond #3 |
+         HCOND CLAUS #4
+CLAUS -> ( BOOL E ) #5
+CONST -> $dec #6 |
+         $zero #7
+    E -> CONST #8 |
+         $id #9 |
+         COND #10
+ BOOL -> $bool #11 |
+         $idq #12 |
+         REL #13
+  REL -> ( < E E ) #14
+

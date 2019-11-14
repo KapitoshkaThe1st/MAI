@@ -1,0 +1,17 @@
+# $v04
+ $dec $zero   $id  $idq 
+$bool     (     )     < 
+   if 
+#
+    S -> IF #1
+   IF -> ( if BOOL E E ) #2
+CONST -> $dec #3 |
+         $zero #4
+    E -> CONST #5 |
+         $id #6 |
+         IF #7
+ BOOL -> $bool #8 |
+         $idq #9 |
+         REL #10
+  REL -> ( < E E ) #11
+

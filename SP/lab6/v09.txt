@@ -1,0 +1,19 @@
+# $v09
+   $id   $dec  $zero  $bool 
+     (      ) define 
+#
+     S -> PROG #1
+  PROG -> DEFS #2 |
+          CALCS #3
+  DEFS -> DEF #4 |
+          DEFS DEF #5
+ CALCS -> CALC #6 |
+          CALCS CALC #7
+  CALC -> E #8
+   DEF -> VAR #9
+   VAR -> ( define $id CONST ) #10
+ CONST -> $dec #11 |
+          $zero #12
+     E -> $id #13 |
+          CONST #14
+

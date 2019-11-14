@@ -1,0 +1,20 @@
+# $v10
+  $id  $dec $zero $bool 
+    (     )     +     - 
+ set! 
+#
+    S -> SET #1
+  SET -> ( set! $id E ) #2
+CONST -> $dec #3 |
+         $zero #4
+    E -> CONST #5 |
+         $id #6 |
+         ADD #7 |
+         SUB #8
+  ADD -> HADD E ) #9
+ HADD -> ( + #10 |
+         HADD E #11
+  SUB -> HSUB E ) #12
+ HSUB -> ( - #13 |
+         HSUB E #14
+

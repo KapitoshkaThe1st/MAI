@@ -1,0 +1,1 @@
+(define (f pi e) (set! pi 6) (set! e 6) (* pi e))

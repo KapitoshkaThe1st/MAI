@@ -1,0 +1,635 @@
+ 
+
+testt --> append([_]).
+% req: testt(X, [1,2]).
+% ans: X=[2].
+
+% req: [_,X|_]='.'(1,'.'(2,'.'(3,[])))
+% ans: 2
+
+q([]).
+q([_,_|X]):-q(X).
+
+/* new list consists of each element
+ on the odd place in first list (begin from 1)*/
+p([X, _|T], [X|R]):-p(T, R).
+p([], []).
+p([X], [X]).
+
+next(H,L,R):-
+    append(_, [H,R|_], L).
+
+/* common recursion n-th power of */
+n_pow(_, 0, 1):-!.
+n_pow(X, 1, X):-!.
+n_pow(X, N, R):-
+    NN is N - 1,
+    n_pow(X, NN, RR),
+    R is RR * X.
+
+/* tail recursion n-th power of */
+n(_, 0, A, A).
+n(X, N, A, R):-
+    N > 0,
+    NN is N - 1,
+    T is A * X,
+    n(X, NN, T, R).
+
+/* tail recursion factorial */
+factorial(0,F,F). 
+factorial(N,A,F) :-  
+    N > 0, 
+    A1 is N*A, 
+    N1 is N - 1, 
+    factorial(N1,A1,F). 
+
+/* tail recursion sum of list elements */
+sum([], A, A).
+sum([H|T], A, R):-
+    AA is A + H,
+    sum(T, AA, R).
+
+/* just for fun :) */
+phi(X, P):-
+    fib(P, F1),
+    PP is P + 1,
+    fib(PP, F2),
+    X is F2 / F1.
+
+/* tail recursion n-th Fibonacci number */
+fib(N, R):-
+    fib(N, 1, 1, R).
+    
+fib(1, A, _, A).
+fib(N, A1, A2, R):-
+    N > 1,
+    AA is A1 + A2,
+    NN is N - 1,
+    fib(NN, A2, AA, R).
+    
+/* tail recursion n! */
+fact(1, R, R).
+fact(N, A, R):-
+    N > 1,
+    NN is N - 1,
+    AA is N * A,
+    fact(NN, AA, R).
+
+/* last element of list */
+last(L, X):-
+    append(_, [X], L).
+
+/* recursive last element of list */
+w([_|X], A):-w(X,A).
+w([X],X).
+
+/* last 3 elements*/
+last3(L, R):-
+    append(_, [X, Y, Z], L), R = [X, Y, Z].
+/* remove last using append */
+remove_last(L, R):-
+    append(R, [_], L).
+/* remove last without using std */
+rm_last([_], []).
+rm_last([H|T], [H|R]):-
+    rm_last(T, R).
+
+/* to postfix notation */
+/* example: 
+?-process(1+2*3, X).
+X = [1, 2, 3, (*), (+)]*/
+process(P, [P]):-
+    atomic(P).
+process(P, L):-
+    P=..[OP, O1, O2],
+    process(O1, L1),
+    process(O2, L2),
+    append(L1,L2,R),
+	append(R, [OP], L).
+
+%1
+/* get last element */
+get_last([H], H).
+get_last([_|T], H):-
+    get_last(T, H).
+
+get_last_s(L, H):-
+    append(_, [H], L).
+
+%2
+/* remove last element */
+remove_last([_], []).
+remove_last([H|T], [H|R]):-
+    remove_last(T, R).
+
+remove_last_s(L, R):-
+    append(R, [_], L).
+
+%3
+/* remove 3 last elements from the list*/
+remove_3_last([_,_,_], []).
+remove_3_last([H|T], [H|R]):-
+    remove_3_last(T, R).
+
+remove_3_last_s(L, R):-
+    append(R, A, L),
+    length(A, 3).
+
+%4
+/* remove first 3 elements from the list */
+remove_3_first([_,_,_|T], T).
+
+remove_3_first_s(L, R):-
+    append(A, R, L),
+    length(A, 3).
+
+%5
+/* remove n first elements from the list */
+remove_n_first(0, L, L).
+remove_n_first(N, [_|T], R):-
+    NN is N - 1,
+    remove_n_first(NN, T, R).
+
+remove_n_first_s(N, L, R):-
+    append(A, R, L),
+    length(A, N).
+
+%6
+/* remove n last elements */
+/* very askew solution but pohuy */
+remove_n_last(N, L, R):-
+    remove_n_last(N, _, L, R).
+remove_n_last(_, 0, [], []).
+remove_n_last(N, M, [_|T], []):-
+    remove_n_last(N, NN, T, _),
+    M is NN + 1, M =< N.
+remove_n_last(N, M, [H|T], [H|R]):-
+    remove_n_last(N, NN, T, R),
+    M is NN + 1, M > N.
+    
+
+remove_n_last_s(N, L, R):-
+    append(R, A, L),
+    length(A, N).
+
+remove_n_last_m(N, L, R):-
+    length(L, M),
+    NN is M - N,
+    cut(NN, L, R). // see predicate below
+
+%7
+/* cut the initial list to list with length N */
+cut(0, _, []):-!.
+cut(N, [H|T], [H|R]):-
+    NN is N - 1,
+    cut(NN, T, R).
+
+cut_s(N, L, R):-
+    append(R, _, L),
+    length(R, N).
+
+%8
+/* insert to the end of list */
+insert_end(E, [], [E]):-!.
+insert_end(E, [H|T], [H|R]):-
+    insert_end(E, T, R).
+
+insert_end_s(E, L, R):-
+    append(L, [E], R).
+
+%9
+/* n-th element in list (begin from 0) */
+nth(0, [H|_], H):-!.
+nth(N, [_|T], R):-
+    NN is N - 1,
+    nth(NN, T, R).
+
+nth_s(N, L, R):-
+    append(A, [R|_], L),
+    length(A, N).
+
+
+%10
+/* insert element on the n-th position (begin from 0) */
+insert_nth(0, E, [], [E]):-!.		// for insert on the last position
+insert_nth(0, E, [H|T], [E, H|T]):-!.
+insert_nth(N, E, [H|T], [H|R]):-
+    NN is N - 1,
+    insert_nth(NN, E, T, R).
+
+insert_nth_s(N, E, L, R):-
+    append(A, B, L),
+    length(A, N),
+    append(A, [E|B], R).
+
+%11
+/* delete element by index (begin from 0) */
+remove_nth(0, [_|T], T).
+remove_nth(N, [H|T], [H|R]):-
+    NN is N - 1,
+    remove_nth(NN, T, R).
+
+remove_nth_s(N, L, R):-
+    append(A, [_|T], L),
+    length(A, N),
+    append(A, T, R).
+
+%12
+/* delete all by value */
+delete_all(_, [], []):-!.
+delete_all(H, [H|T], R):-
+    delete_all(H, T, R), !.
+delete_all(X, [E|T], [E|R]):-
+    delete_all(X, T, R).
+
+%13
+/* next to X element in list */
+next_to(H, [H,X|_], X):-!.
+next_to(H, [_|T], R):-
+    next_to(H, T, R).
+
+next_to_s(H, L, R):-
+    append(_, [H, R|_], L).
+
+%14
+/* replace n-th element in list with E */
+replace_nth(0, E, [_|T], [E|T]):-!.
+replace_nth(N, E, [H|T], [H|R]):-
+    NN is N - 1,
+    replace_nth(NN, E, T, R).
+
+replace_nth_s(N, E, L, R):-
+    append(A, [_|T], L),
+    length(A, N),
+    append(A, [E|T], R).
+
+%15
+/* replace every occurence of H with E in list */
+replace_all(_, _, [], []):-!.
+replace_all(H, E, [H|T], [E|R]):-
+    replace_all(H, E, T, R), !.
+replace_all(H, E, [W|T], [W|R]):-
+    replace_all(H, E, T, R).
+
+
+%16
+/* index of the 1st occurence of element in list (begin from 0) */
+index(H, [H|_], 0):-!.
+index(X, [_|T], N):-
+    index(X, T, NN),
+    N is NN +1.
+
+index_s(E, L, N):-
+    append(T, [E|_], L),
+    length(T, N), !.
+
+%17
+/* tail after element */
+tail([H|T], H, T):-!.
+tail([_|T], E, R):-
+    tail(T, E, R).
+/* tail after element with std*/
+tail_s(L, E, R):-
+    append(_,[E|R],L).
+
+%18
+/* count of elements equal to E in the list */
+count(_, [], 0).
+count(E, [E|T], C):-
+    count(E, T, CC),
+    C is CC + 1, !.
+count(E, [_|T], CC):-
+    count(E, T, CC).
+
+%19
+/* cycle shift of list to the right */
+cycle_shift(L, N, R):-
+    append(A, B, L),
+    length(B, N),
+    append(B, A, R).
+
+%1
+/* sum of elements of the list */
+/* simple */
+sum([], 0):-!.
+sum([H|T], S):-
+    sum(T, SS),
+    S is SS + H.
+/* tail recursion */
+sum_t(L, S):-
+    sum_t(L, 0, S).
+sum_t([], R, R):-!.
+sum_t([H|T], A, R):-
+    AA is A + H,
+    sum_t(T, AA, R).
+
+%2
+/* product of elements of the list */
+/* simple */
+product([], 1):-!.
+product([H|T], S):-
+    product(T, SS),
+    S is SS * H.
+/* tail recursion */
+product_t(L, P):-
+    product_t(L, 1, P).
+product_t([], R, R):-!.
+product_t([H|T], A, R):-
+    AA is A * H,
+    product_t(T, AA, R).
+
+%3
+/* max element */
+/* simple */
+max([E], E):-!.
+max([H|T], HH):-
+    max(T, HH),
+    H < HH,!.
+max([H|_], H).
+/* tail recursion */
+max_t([H|T], M):-
+    max_t([H|T], H, M).
+max_t([], M, M):-!.
+max_t([H|T], A, R):-
+    A > H, 
+    max_t(T, A, R), !.
+max_t([H|T], _, R):-
+    max_t(T, H, R).
+
+%4
+/* min element */
+/* simple */
+min([E], E):-!.
+min([H|T], HH):-
+    min(T, HH),
+    H > HH,!.
+min([H|_], H).
+/* tail recursion */
+min_t([H|T], M):-
+    min_t([H|T], H, M).
+min_t([], M, M):-!.
+min_t([H|T], A, R):-
+    A < H, 
+    min_t(T, A, R), !.
+min_t([H|T], _, R):-
+    min_t(T, H, R).
+
+    
+%5 НЕПРАВИЛЬНО (ЭТО НЕ СКАЛЯРНОЕ ПРОИЗВЕДЕНИЕ НИХУЯ)
+/* dot product (may have different dimensions)  */
+/* simple */
+dot_product(L, [], L):-!.
+dot_product([], R, R):-!.
+dot_product([H1|T1], [H2|T2], [H|T]):-
+    dot_product(T1, T2, T),
+    H is H1 * H2.
+/* tail recursion */
+dot_product_t(V1, V2, R):-
+    dot_product_t(V1, V2, [], R).
+dot_product_t(T, [], R, RR):-
+    append(R, T, RR), !.
+dot_product_t([], T, R, RR):-
+    append(R, T, RR), !.
+dot_product_t([H1|T1], [H2|T2], T, R):-
+    P is H1 * H2,
+    append(T, [P], E),
+	dot_product_t(T1, T2, E, R).
+
+%6
+/* count of even elements */
+/* simple */
+even_count([], 0):-!.
+even_count([H|T], C):-
+    even_count(T, CC),
+    R is H mod 2, R = 0,
+    C is CC + 1, !.
+even_count([_|T], CC):-
+    even_count(T, CC).
+/* tail recursion */
+even_count_t([], R, R):-!.
+even_count_t([H|T], A, R):-
+    Q is H mod 2, Q = 0, 
+    AA is A + 1,
+    even_count_t(T, AA, R), !.
+even_count_t([_|T], A, R):-
+    even_count_t(T, A, R).
+
+%7
+/* checking if list is sorted */
+is_sorted([]):-!.
+is_sorted([_]):-!.
+is_sorted([X,Y|T]):-
+    X < Y,
+    is_sorted([Y|T]).
+
+%8
+/* average of list */
+average(L, R):-
+    length(L, N),
+    N > 0,
+    sum_t(L, S), // see above (you can use sum instead of sum_t)
+    R is S / N, !.
+average(_, 0).
+
+%9
+/* count of occurences of element in the list */
+/* simple */
+count(_, [], 0):-!.
+count(E, [E|T], C):-
+    count(E, T, CC),
+    C is CC + 1, !.
+count(E, [_|T], CC):-
+	count(E, T, CC).
+/* tail recursion */
+count_t(_, [], R, R):-!.
+count_t(E, [E|T], A, R):-
+    AA is A + 1,
+    count_t(E, T, AA, R), !.
+count_t(E, [_|T], A, R):-
+    count_t(E, T, A, R).
+
+%10
+/* lexicographical comparsion (1 - 1st greater, 0 - equal, -1 - 1st less)*/
+
+cmp([_|_], [], 1):-!.
+cmp([], [_|_], -1):-!.
+cmp([], [], 0):-!.
+cmp([H1|_], [H2|_], 1):-
+    H1 > H2, !.
+cmp([H1|_], [H2|_], -1):-
+    H1 < H2, !.
+cmp([H|T1], [H|T2], R):-
+    cmp(T1, T2, R).
+
+%11
+/* index of maximal element */
+/* only simple naive implementation */
+max_pos(L,P):-
+    max_pos(L, 0, _, P).
+max_pos([X], N, X, N).
+max_pos([H|T], N, MM, P):-
+    NN is N + 1,
+    max_pos(T, NN, MM, P),
+    H < MM, !.
+max_pos([H|T], N, H, N):-
+    NN is N + 1,
+    max_pos(T, NN, _, _).
+
+%12
+/* index of minimal element */
+/* only simple naive implementation */
+min_pos(L,P):-
+    min_pos(L, 0, _, P).
+min_pos([X], N, X, N).
+min_pos([H|T], N, MM, P):-
+    NN is N + 1,
+    min_pos(T, NN, MM, P),
+    H > MM, !.
+min_pos([H|T], N, H, N):-
+    NN is N + 1,
+    min_pos(T, NN, _, _).
+
+%13
+/* checking if list is arithmetic progression */
+arm_progress_chk(L):-
+    L = [X, Y|_],
+    D is Y - X,
+    arm_progress_chk(L, D).
+arm_progress_chk([_], _):-!.
+arm_progress_chk([X, Y|T], D):-
+    D is Y - X,
+    arm_progress_chk([Y|T], D).
+
+%14
+/* checking if list is geometretic progression */
+gm_progress_chk(L):-
+    L = [X, Y|_],
+    D is Y / X,
+    gm_progress_chk(L, D).
+gm_progress_chk([_], _):-!.
+gm_progress_chk([X, Y|T], D):-
+    D is Y / X,
+    gm_progress_chk([Y|T], D).
+
+%15
+/* get position of first negative element (begin from 0)*/
+first_neg_pos(L, P):-
+    first_neg_pos(L, 0, P).
+first_neg_pos([H|_], N, N):-
+    H < 0, !.
+first_neg_pos([_|T], N, R):-
+    NN is N + 1,
+    first_neg_pos(T, NN, R).
+
+%16
+/* sum of vector (may have different dimensions) */
+/* simple */
+    vec_sum(L, [], L):-!.
+vec_sum([], R, R):-!.
+vec_sum([H1|T1], [H2|T2], [H|T]):-
+    vec_sum(T1, T2, T),
+    H is H1 + H2.
+/* tail recursion */
+vec_sum_t(V1, V2, R):-
+    vec_sum_t(V1, V2, [], R).
+vec_sum_t(T, [], R, RR):-
+    append(R, T, RR), !.
+vec_sum_t([], T, R, RR):-
+    append(R, T, RR), !.
+vec_sum_t([H1|T1], [H2|T2], T, R):-
+    P is H1 + H2,
+    append(T, [P], E),
+	vec_sum_t(T1, T2, E, R).
+
+%17
+/* merge two sorted lists */
+merge(T, [], T):-!.
+merge([], T, T):-!.
+merge([H|T1], [HH|T2], [H|R]):-
+    H < HH,
+    merge(T1,[HH|T2], R), !.
+merge([H|T1], [HH|T2], [HH|R]):-
+    merge([H|T1], T2, R).
+
+%18 
+/* split list by odd-even criteria */
+split_ov([], [], []):-!.
+split_ov([H|T], [H|O], E):-
+    0 is H mod 2,
+    split_ov(T, O, E), !.
+split_ov([H|T], O, [H|E]):-
+    split_ov(T, O, E).
+
+%19
+/* split list to greater-or-equal and less than 1-st element */
+split_gl([H|T], G, L):-
+    split_gl(H, [H|T], G, L).
+split_gl(_, [], [], []):-!.
+split_gl(E, [H|T], [H|L], G):-
+    H < E,
+    split_gl(E, T, L, G), !.
+split_gl(E, [H|T], L, [H|G]):-
+    split_gl(E, T, L, G).
+
+%20
+/* split list by firs-second principle */
+split_fs(L, F, S):-
+    split_fs(L, 0, F, S).
+split_fs([], _, [], []):-!.
+split_fs([H|T], N, [H|O], E):-
+    0 is N mod 2,
+    NN is N + 1,
+   	split_fs(T, NN, O, E), !.
+split_fs([H|T], N, O, [H|E]):-
+    NN is N + 1,
+    split_fs(T, NN, O, E).
+
+
+/* лаба 2 */
+
+%1
+/* Про талантливых людей */
+solve(X):-
+    permutation([voronov, pavlov, levitsky, saharov], X),
+    X = [Danc, Art, Sing, Writ],
+    /* ни Воронов, ни Левитский не певцы */
+    Sing \= voronov, Sing \= levitsky, 
+    /* Павлов не писатель и не художник */
+    Writ \= pavlov, Art \= pavlov,
+    /* Ни Сахаров, ни Воронов не писатели */
+    Writ \= saharov, Writ \= voronov,
+    /* кто с кем знаком */
+    KNOW = [k(pavlov, Writ), k(pavlov, Art),
+    	k(Writ, Art), k(Writ, saharov)],
+    not(member(k(levitsky, voronov), KNOW)).
+
+%2
+/*  */
+
+/* complex number implementation */
+:-op(700, xfy, 'cis').
+:-op(500, xfy, 'c+').
+:-op(500, xfy, 'c-').
+:-op(400, xfy, 'c*').
+:-op(400, xfy, 'c/').
+
+
+cis(comp(A, B), comp(A, B)):-!.
+cis(comp(X, Y), comp(A, B) 'c+' comp(C, D)):-
+    X is A + C,
+    Y is B + D, !.
+cis(comp(X, Y), comp(A, B) 'c-' comp(C, D)):-
+    X is A - C,
+    Y is B - D, !.
+cis(comp(X, Y), comp(A, B) 'c*' comp(C, D)):-
+    X is A * C - B * D,
+    Y is A * D + B * C, !.
+cis(comp(X, Y), comp(A, B) 'c/' comp(C, D)):-
+    X is (A*C+B*D)/(C*C + D*D),
+    Y is (C*B - A*D)/(C*C + D*D), !.
+cis(R, E):-
+    E=..[Op, A, B],
+    cis(A, C),
+    cis(B, D),
+    T=..[Op, C, D],
+    R cis T, !.
