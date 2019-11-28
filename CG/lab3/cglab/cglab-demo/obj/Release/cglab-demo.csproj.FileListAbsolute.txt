@@ -1,0 +1,10 @@
+C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-demo\bin\Release\cglab-demo.exe.config
+C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-demo\bin\Release\cglab-demo.exe
+C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-demo\bin\Release\cglab-demo.pdb
+C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-demo\bin\Release\CGLabPlatform.dll
+C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-demo\bin\Release\CGLabPlatform.pdb
+C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-demo\obj\Release\cglab-demo.csprojAssemblyReference.cache
+C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-demo\obj\Release\cglab-demo.csproj.CoreCompileInputs.cache
+C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-demo\obj\Release\cglab-demo.csproj.CopyComplete
+C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-demo\obj\Release\cglab-demo.exe
+C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-demo\obj\Release\cglab-demo.pdb

@@ -1,0 +1,334 @@
+//void SurfaceSetPixel(BitmapSurface bs, int x, int y, int r, int g, int b, int Width, int Height)
+    //{
+    //    int xToDraw = x + Width / 2 + ShiftX;
+    //    int yToRdaw = y + Height / 2 - ShiftY;
+
+    //    bs.DrawQuality = SurfaceDrawQuality.Low;
+
+    //    //bs.DrawTriangle(toCompactArgb(255, r, g, b), x, y, x, y, x, y);
+    //    bs.FillRectangle(toCompactArgb(255, r, g, b), xToDraw, yToRdaw, 1, 1);
+    //}
+
+    //void SurfaceFillTriange(Polygon p, int i1, int i2, int i3, BitmapSurface bs, int Width, int Height)
+    //{
+    //    List<Vertex> l = p.Vertex;
+
+    //    // points 
+    //    DVector4 a, b, c;
+    //    (c, b, a) = Sort3(l[i1].Point, l[i2].Point, l[i3].Point);
+
+    //    /*    (A)
+    //          /\
+    //         /  \
+    //        /    \
+    //       /______\
+    //      /      .   (B)
+    //     /   .        
+    //    /.
+    //   (C)
+    //     */
+
+    //    // normal components
+    //    double M = p.Normal.X;
+    //    double N = p.Normal.Y;
+    //    double K = p.Normal.Z;
+
+    //    if (Math.Abs(K) <= 0.00001)
+    //    {
+    //        return;
+    //    }
+
+    //    // line coefs
+    //    double kAC = (a.X - c.X) / (a.Y - c.Y);
+    //    double kAB = (a.X - b.X) / (a.Y - b.Y);
+    //    double kCB = (c.X - b.X) / (c.Y - b.Y);
+
+    //    // upper part of triangle
+    //    if (Math.Abs(a.Y - b.Y) >= 1.0)
+    //    {
+    //        for (int j = (int)a.Y; j < (int)b.Y; ++j)
+    //        {
+    //            int s = (int)(kAC * (j - c.Y) + c.X);
+    //            int f = (int)(kAB * (j - b.Y) + b.X);
+
+    //            if (s > f)
+    //            {
+    //                int temp = s;
+    //                s = f;
+    //                f = temp;
+    //            }
+
+    //            for (int i = s; i <= f; ++i)
+    //            {
+    //                double z = a.Z - (M * (i - a.X) + N * (j - a.Y)) / K;
+
+    //                int cr = 0, cg = 0, cb = 0;
+    //                PhongModel(p, i, j, z, ref cr, ref cg, ref cb);
+
+    //                SurfaceSetPixel(bs, i, j, cr, cg, cb, Width, Height);
+    //            }
+    //        }
+    //    }
+        
+    //    // lower part of triangle
+    //    if (Math.Abs(c.Y - b.Y) >= 1.0)
+    //    {
+    //        for (int j = (int)b.Y; j <= (int)c.Y; ++j)
+    //        {
+    //            int s = (int)(kAC * (j - c.Y) + c.X);
+    //            int f = (int)(kCB * (j - b.Y) + b.X);
+
+    //            if (s > f)
+    //            {
+    //                int temp = s;
+    //                s = f;
+    //                f = temp;
+    //            }
+
+    //            for (int i = s; i <= f; ++i)
+    //            {
+    //                double z = a.Z - (M * (i - a.X) + N * (j - a.Y)) / K;
+
+    //                int cr = 0, cg = 0, cb = 0;
+    //                PhongModel(p, i, j, z, ref cr, ref cg, ref cb);
+
+    //                SurfaceSetPixel(bs, i, j, cr, cg, cb, Width, Height);
+    //            }
+    //        }
+    //    }
+    //}
+
+    //void SurfaceFillPolygon(Polygon p, BitmapSurface bs, int Width, int Height)
+    //{
+    //    int count = p.Vertex.Count();
+    //    for(int i = 1; i < count - 1; ++i)
+    //    {
+    //        SurfaceFillTriange(p, 0, i, i + 1, bs, Width, Height);
+    //    }
+    //}
+
+    //void GraphicsSetPixel(Graphics g, int x, int y, int cr, int cg, int cb, int Width, int Height)
+    //{
+    //    Brush brush = new SolidBrush(Color.FromArgb(cr, cg, cb));
+    //    int xToDraw = x + Width / 2 + ShiftX;
+    //    int yToRdaw = y + Height / 2 - ShiftY;
+
+    //    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+    //    g.FillRectangle(brush, xToDraw, yToRdaw, 1, 1);
+    //}
+
+    //void GraphicsFillTriange(Polygon p, int i1, int i2, int i3, Graphics g, int Width, int Height)
+    //{
+    //    List<Vertex> l = p.Vertex;
+
+    //    // points 
+    //    DVector4 a, b, c;
+    //    (c, b, a) = Sort3(l[i1].Point, l[i2].Point, l[i3].Point);
+
+    //    /*    (A)
+    //          /\
+    //         /  \
+    //        /    \
+    //       /______\
+    //      /      .   (B)
+    //     /   .        
+    //    /.
+    //   (C)
+    //     */
+
+    //    // normal components
+    //    double M = p.Normal.X;
+    //    double N = p.Normal.Y;
+    //    double K = p.Normal.Z;
+
+    //    if (Math.Abs(K) <= 0.00001)
+    //    {
+    //        return;
+    //    }
+
+    //    // line coefs
+    //    double kAC = (a.X - c.X) / (a.Y - c.Y);
+    //    double kAB = (a.X - b.X) / (a.Y - b.Y);
+    //    double kCB = (c.X - b.X) / (c.Y - b.Y);
+
+    //    // upper part of triangle
+    //    if (Math.Abs(a.Y - b.Y) >= 1.0)
+    //    {
+    //        for (int j = (int)a.Y; j < (int)b.Y; ++j)
+    //        {
+    //            int s = (int)(kAC * (j - c.Y) + c.X);
+    //            int f = (int)(kAB * (j - b.Y) + b.X);
+
+    //            if (s > f)
+    //            {
+    //                int temp = s;
+    //                s = f;
+    //                f = temp;
+    //            }
+
+    //            for (int i = s; i <= f; ++i)
+    //            {
+    //                double z = a.Z - (M * (i - a.X) + N * (j - a.Y)) / K;
+
+    //                int cr = 0, cg = 0, cb = 0;
+    //                PhongModel(p, i, j, z, ref cr, ref cg, ref cb);
+
+    //                GraphicsSetPixel(g, i, j, cr, cg, cb, Width, Height);
+    //            }
+    //        }
+    //    }
+
+    //    // lower part of triangle
+    //    if (Math.Abs(c.Y - b.Y) >= 1.0)
+    //    {
+    //        for (int j = (int)b.Y; j <= (int)c.Y; ++j)
+    //        {
+    //            int s = (int)(kAC * (j - c.Y) + c.X);
+    //            int f = (int)(kCB * (j - b.Y) + b.X);
+
+    //            if (s > f)
+    //            {
+    //                int temp = s;
+    //                s = f;
+    //                f = temp;
+    //            }
+
+    //            for (int i = s; i <= f; ++i)
+    //            {
+    //                double z = a.Z - (M * (i - a.X) + N * (j - a.Y)) / K;
+
+    //                int cr = 0, cg = 0, cb = 0;
+    //                PhongModel(p, i, j, z, ref cr, ref cg, ref cb);
+
+    //                GraphicsSetPixel(g, i, j, cr, cg, cb, Width, Height);
+    //            }
+    //        }
+    //    }
+    //}
+
+    //void GraphicsFillPolygon(Polygon p, Graphics g, int Width, int Height)
+    //{
+    //    int count = p.Vertex.Count();
+    //    for (int i = 1; i < count - 1; ++i)
+    //    {
+    //        GraphicsFillTriange(p, 0, i, i + 1, g, Width, Height);
+    //    }
+    //}
+
+//void BitmapSetPixel(Bitmap bm, int x, int y, int cr, int cg, int cb, int Width, int Height)
+    //{
+    //    int xToDraw = x + Width / 2 + (int)ShiftX;
+    //    int yToDraw = y + Height / 2 - (int)ShiftY;
+
+    //    if (xToDraw < 0 || xToDraw >= Width || yToDraw < 0 || yToDraw >= Height)
+    //    {
+    //        return;
+    //    }
+
+    //    bm.SetPixel(xToDraw, yToDraw, Color.FromArgb(255, cr, cg, cb));
+    //}
+
+    //void BitmapFillTriange(Polygon p, Vertex a, Vertex b, Vertex c, Bitmap bm, int Width, int Height)
+    //{
+    //    // points 
+    //    (c, b, a) = Sort3(a, b, c);
+
+    //    DVector4 pa = a.Point, pb = b.Point, pc = c.Point;
+    //    /*    (A)
+    //          /\
+    //         /  \
+    //        /    \
+    //       /______\
+    //      /      .   (B)
+    //     /   .        
+    //    /.
+    //   (C)
+    //     */
+
+    //    // normal components
+    //    double M = p.Normal.X;
+    //    double N = p.Normal.Y;
+    //    double K = p.Normal.Z;
+
+    //    if (Math.Abs(K) <= 0.00001)
+    //    {
+    //        return;
+    //    }
+
+    //    // line coefs
+    //    double kAC = (pa.X - pc.X) / (pa.Y - pc.Y);
+    //    double kAB = (pa.X - pb.X) / (pa.Y - pb.Y);
+    //    double kCB = (pc.X - pb.X) / (pc.Y - pb.Y);
+
+    //    // upper part of triangle
+    //    if (Math.Abs(pa.Y - pb.Y) >= 1.0)
+    //    {
+    //        for (int j = (int)pa.Y; j < (int)pb.Y; ++j)
+    //        {
+    //            //int s = (int)(kAC * (j - c.Y) + c.X);
+    //            //int f = (int)(kAB * (j - b.Y) + b.X);
+    //            int s = (int)Lerp(pc.X, j, pc.Y, kAC);
+    //            int f = (int)Lerp(pb.X, j, pb.Y, kAB);
+
+    //            if (s > f)
+    //            {
+    //                int temp = s;
+    //                s = f;
+    //                f = temp;
+    //            }
+
+    //            for (int i = s; i <= f; ++i)
+    //            {
+    //                double z = pa.Z - (M * (i - pa.X) + N * (j - pa.Y)) / K;
+
+    //                // to do
+    //                //double nx = Lerp();
+
+    //                int cr = 0, cg = 0, cb = 0;
+    //                //PhongModel(i, j, z, ref cr, ref cg, ref cb);
+    //                Model(i, j, z, ref cr, ref cg, ref cb);
+
+    //                BitmapSetPixel(bm, i, j, cr, cg, cb, Width, Height);
+    //            }
+    //        }
+    //    }
+
+    //    // lower part of triangle
+    //    if (Math.Abs(pc.Y - pb.Y) >= 1.0)
+    //    {
+    //        for (int j = (int)pb.Y; j <= (int)pc.Y; ++j)
+    //        {
+    //            //int s = (int)(kAC * (j - c.Y) + c.X);
+    //            //int f = (int)(kCB * (j - b.Y) + b.X);
+    //            int s = (int)Lerp(pc.X, j, pc.Y, kAC);
+    //            int f = (int)Lerp(pb.X, j, pb.Y, kCB);
+
+    //            if (s > f)
+    //            {
+    //                int temp = s;
+    //                s = f;
+    //                f = temp;
+    //            }
+
+    //            for (int i = s; i <= f; ++i)
+    //            {
+    //                double z = pa.Z - (M * (i - pa.X) + N * (j - pa.Y)) / K;
+
+    //                int cr = 0, cg = 0, cb = 0;
+    //                //PhongModel(p, i, j, z, ref cr, ref cg, ref cb);
+    //                Model(i, j, z, ref cr, ref cg, ref cb);
+
+    //                BitmapSetPixel(bm, i, j, cr, cg, cb, Width, Height);
+    //            }
+    //        }
+    //    }
+    //}
+
+    //void BitmapFillPolygon(Polygon p, Bitmap bm, int Width, int Height)
+    //{
+    //    int count = p.Vertex.Count();
+    //    for (int i = 1; i < count - 1; ++i)
+    //    {
+    //        BitmapFillTriange(p, p.Vertex[0], p.Vertex[i], p.Vertex[i + 1], bm, Width, Height);
+    //    }
+    //}

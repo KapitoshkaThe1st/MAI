@@ -1,0 +1,5 @@
+C:\Users\Alexey\Desktop\CGLabs\lab2\cglab\CGLabPlatform\bin\Release\CGLabPlatform.dll
+C:\Users\Alexey\Desktop\CGLabs\lab2\cglab\CGLabPlatform\bin\Release\CGLabPlatform.pdb
+C:\Users\Alexey\Desktop\CGLabs\lab2\cglab\CGLabPlatform\obj\Release\CGLabPlatform.csprojAssemblyReference.cache
+C:\Users\Alexey\Desktop\CGLabs\lab2\cglab\CGLabPlatform\obj\Release\CGLabPlatform.dll
+C:\Users\Alexey\Desktop\CGLabs\lab2\cglab\CGLabPlatform\obj\Release\CGLabPlatform.pdb

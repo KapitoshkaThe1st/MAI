@@ -1,0 +1,9 @@
+C:\Users\Alexey\Desktop\CGLabs\lab4\cglab\cglab-OGL-example\obj\Debug\cglab-OGL-example.csprojAssemblyReference.cache
+C:\Users\Alexey\Desktop\CGLabs\lab4\cglab\cglab-OGL-example\bin\Debug\cglab45-ogl3d.exe.config
+C:\Users\Alexey\Desktop\CGLabs\lab4\cglab\cglab-OGL-example\bin\Debug\cglab45-ogl3d.exe
+C:\Users\Alexey\Desktop\CGLabs\lab4\cglab\cglab-OGL-example\bin\Debug\cglab45-ogl3d.pdb
+C:\Users\Alexey\Desktop\CGLabs\lab4\cglab\cglab-OGL-example\bin\Debug\CGLabPlatform.dll
+C:\Users\Alexey\Desktop\CGLabs\lab4\cglab\cglab-OGL-example\bin\Debug\CGLabPlatform.pdb
+C:\Users\Alexey\Desktop\CGLabs\lab4\cglab\cglab-OGL-example\obj\Debug\cglab-OGL-example.csproj.CopyComplete
+C:\Users\Alexey\Desktop\CGLabs\lab4\cglab\cglab-OGL-example\obj\Debug\cglab45-ogl3d.exe
+C:\Users\Alexey\Desktop\CGLabs\lab4\cglab\cglab-OGL-example\obj\Debug\cglab45-ogl3d.pdb
