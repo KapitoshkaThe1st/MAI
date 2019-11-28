@@ -474,8 +474,6 @@ public abstract class CGLabEmpty : GFXApplicationTemplate<CGLabEmpty>
 
         Vertecis = v.ToArray();
         Polygons = p.ToArray();
-
-        System.Threading.Thread.Sleep(1);
     }
 
     double rotX = 0.0;

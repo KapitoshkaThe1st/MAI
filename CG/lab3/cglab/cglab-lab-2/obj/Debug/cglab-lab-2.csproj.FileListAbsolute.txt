@@ -27,3 +27,14 @@ C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-lab-2\obj\Debug\cglab-demo.exe
 C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-lab-2\obj\Debug\cglab-demo.pdb
 C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-lab-2\bin\Debug\System.ValueTuple.dll
 C:\Users\Alexey\Desktop\CGLabs\lab3\cglab\cglab-lab-2\bin\Debug\System.ValueTuple.xml
+C:\Users\Alexey\MAI\CG\lab3\cglab\cglab-lab-2\bin\Debug\cglab-demo.exe.config
+C:\Users\Alexey\MAI\CG\lab3\cglab\cglab-lab-2\bin\Debug\cglab-demo.exe
+C:\Users\Alexey\MAI\CG\lab3\cglab\cglab-lab-2\bin\Debug\cglab-demo.pdb
+C:\Users\Alexey\MAI\CG\lab3\cglab\cglab-lab-2\bin\Debug\CGLabPlatform.dll
+C:\Users\Alexey\MAI\CG\lab3\cglab\cglab-lab-2\bin\Debug\System.ValueTuple.dll
+C:\Users\Alexey\MAI\CG\lab3\cglab\cglab-lab-2\bin\Debug\CGLabPlatform.pdb
+C:\Users\Alexey\MAI\CG\lab3\cglab\cglab-lab-2\bin\Debug\System.ValueTuple.xml
+C:\Users\Alexey\MAI\CG\lab3\cglab\cglab-lab-2\obj\Debug\cglab-lab-2.csprojAssemblyReference.cache
+C:\Users\Alexey\MAI\CG\lab3\cglab\cglab-lab-2\obj\Debug\cglab-lab-2.csproj.CopyComplete
+C:\Users\Alexey\MAI\CG\lab3\cglab\cglab-lab-2\obj\Debug\cglab-demo.exe
+C:\Users\Alexey\MAI\CG\lab3\cglab\cglab-lab-2\obj\Debug\cglab-demo.pdb
