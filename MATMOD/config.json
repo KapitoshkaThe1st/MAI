@@ -1,0 +1,36 @@
+{
+    "executable": "./prog",
+    "n_process": 2,
+    "hostfile": "hostfile",
+    "parameters":{
+        "r10": 4.4,
+        "r20": 4.0,
+        "eps1": 4.0,
+        "eps2": 4.0,
+        "u1": 0.0,
+        "u2": 0.0,
+        "gamma": 1.4,
+        "alpha": 1.0,
+        "max_t": 1.0
+    },
+    "grid_params":[
+        {
+            "target_t": 1.0,
+            "N": 200,
+            "M": 800,
+            "output_file_prefix": "output200_800_"
+        },
+        {
+            "target_t": 1.0,
+            "N": 400,
+            "M": 1600,
+            "output_file_prefix": "output400_1600_"
+        },
+        {
+            "target_t": 1.0,
+            "N": 800,
+            "M": 3200,
+            "output_file_prefix": "output800_3200_"
+        }
+    ]
+}
